@@ -6,8 +6,6 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 		<link rel="stylesheet" href="/css/app.css">
 		<link rel="stylesheet" href="/css/style.css">
-		<script>
-    </script>
 		<title>Simple</title>
 	</head>
 	<body>

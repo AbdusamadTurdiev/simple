@@ -1,6 +1,20 @@
 <?php
 
 /**
+ * Admin Panel
+*/
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', 'AdminController@index')->middleware('admin')->name('admin.index');
+
+    Route::get('/search', 'AdminController@search')->middleware('admin')->name('admin.search');
+
+    Route::delete('/user/delete/{id}', 'AdminController@deleteUser')->middleware('admin')->name('user.delete');
+
+    Route::patch('/user/restore/{id}', 'AdminController@restoreUser')->middleware('admin')->name('user.restore');
+});
+
+/**
  * Home
 */
 

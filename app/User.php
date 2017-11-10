@@ -5,6 +5,7 @@ namespace App;
 use App\Status;
 use App\Avatar;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Cmgmyr\Messenger\Traits\Messagable;
 
@@ -12,6 +13,14 @@ class User extends Authenticatable
 {
     use Notifiable;
     use Messagable;
+    use SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
         'email',
@@ -40,6 +49,11 @@ class User extends Authenticatable
         }
 
         return null;
+    }
+
+    public function isAdmin()
+    {
+        return $this->admin;
     }
 
     public function setAvatar()
